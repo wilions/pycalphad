@@ -1,0 +1,18 @@
+entries:
+  - doi: "10.1007/s11669-008-9366-z"
+    system: "Al-Sc"
+    type: "thermodynamic"
+    path: "extracted/alsc_thermo.json"
+    supersede_constituents:
+      - ["AL", "SC"]
+  - doi: "10.1016/S0964-1807(03)00084-2"
+    system: "Al-Mg-Si-Sc-Zr-Fe-mobility"
+    type: "mobility"
+    path: "extracted/al_impurity_mobility.json"
+    supersede_constituents:
+      - ["AL", "AL"]
+      - ["AL", "MG"]
+      - ["AL", "SI"]
+      - ["AL", "SC"]
+      - ["AL", "ZR"]
+      - ["AL", "FE"]

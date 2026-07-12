@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CalphadAssessment",
+  "description": "Schema for extracted Calphad thermodynamic and mobility parameter assessments from literature",
+  "type": "object",
+  "properties": {
+    "doi": { "type": "string" },
+    "system": { "type": "string" },
+    "elements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "sublattices": {
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          "constituents": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "model_hints": {
+            "type": "object",
+            "properties": {
+              "ordered_phase": { "type": "string" },
+              "disordered_phase": { "type": "string" },
+              "never_disorder": { "type": "boolean" },
+              "ihj_magnetic_afm_factor": { "type": "number" },
+              "ihj_magnetic_structure_factor": { "type": "number" },
+              "symmetry_FCC_4SL": { "type": "boolean" },
+              "symmetry_BCC_4SL": { "type": "boolean" },
+              "ionic_liquid_2SL": { "type": "boolean" },
+              "liquid": { "type": "boolean" },
+              "gas": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": ["name", "sublattices", "constituents"]
+      }
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "pieces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "T_limits": {
+                  "type": "array",
+                  "items": { "type": "number" },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "expression": { "type": "string" }
+              },
+              "required": ["T_limits", "expression"]
+            }
+          }
+        },
+        "required": ["name", "pieces"]
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["G", "L", "TC", "BMAGN", "MQ"] },
+          "phase": { "type": "string" },
+          "constituent_array": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "diffusing_species": { "type": "string" },
+          "parameter_order": { "type": "integer" },
+          "pieces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "T_limits": {
+                  "type": "array",
+                  "items": { "type": "number" },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "expression": { "type": "string" }
+              },
+              "required": ["T_limits", "expression"]
+            }
+          },
+          "reference_tag": { "type": "string" }
+        },
+        "required": ["type", "phase", "constituent_array", "parameter_order", "pieces"]
+      }
+    }
+  },
+  "required": ["doi", "elements", "phases", "functions", "parameters"]
+}

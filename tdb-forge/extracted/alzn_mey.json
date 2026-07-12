@@ -1,0 +1,218 @@
+{
+  "doi": "10.1007/BF02661386",
+  "system": "Al-Zn",
+  "elements": ["AL", "ZN"],
+  "phases": [
+    {
+      "name": "LIQUID",
+      "sublattices": [1.0],
+      "constituents": [["AL", "ZN"]]
+    },
+    {
+      "name": "FCC_A1",
+      "sublattices": [1.0],
+      "constituents": [["AL", "ZN"]]
+    },
+    {
+      "name": "HCP_A3",
+      "sublattices": [1.0],
+      "constituents": [["AL", "ZN"]]
+    }
+  ],
+  "functions": [
+    {
+      "name": "GALLIQ",
+      "pieces": [
+        {
+          "T_limits": [298.0, 700.0],
+          "expression": "+3029.403+125.2307*T-24.36720*T*LN(T)-1.884662E-3*T**2-0.877664E-6*T**3+74092*T**(-1)+79.401E-21*T**7"
+        },
+        {
+          "T_limits": [700.0, 933.6],
+          "expression": "-270.6860+211.1861*T-38.58443*T*LN(T)+18.53198E-3*T**2-5.764227E-6*T**3+74092*T**(-1)+79.401E-21*T**7"
+        },
+        {
+          "T_limits": [933.6, 2900.0],
+          "expression": "-795.7090+177.4100*T-31.74819*T*LN(T)"
+        }
+      ]
+    },
+    {
+      "name": "GALHCP",
+      "pieces": [
+        {
+          "T_limits": [298.0, 6000.0],
+          "expression": "+5481-1.8*T+GHSERAL#"
+        }
+      ]
+    },
+    {
+      "name": "GZNLIQ",
+      "pieces": [
+        {
+          "T_limits": [298.14, 692.7],
+          "expression": "+7157.213-10.29299*T-3.5896E-19*T**7+GHSERZN#"
+        },
+        {
+          "T_limits": [692.7, 1700.0],
+          "expression": "+7450.168-10.737066*T-4.7051E+26*T**(-9)+GHSERZN#"
+        }
+      ]
+    },
+    {
+      "name": "GZNFCC",
+      "pieces": [
+        {
+          "T_limits": [298.15, 1700.0],
+          "expression": "+2969.82-1.56968*T+GHSERZN#"
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [["AL"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 2900.0],
+          "expression": "+GALLIQ#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [["ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 1700.0],
+          "expression": "+GZNLIQ#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "+10465.5-3.39259*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 2900.0],
+          "expression": "+GHSERAL#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [["ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 1700.0],
+          "expression": "+GZNFCC#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "+7297.5+0.47512*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "+6612.9-4.5911*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 2,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "-3097.2+3.30635*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "HCP_A3",
+      "constituent_array": [["AL"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 2900.0],
+          "expression": "+GALHCP#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "HCP_A3",
+      "constituent_array": [["ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 1700.0],
+          "expression": "+GHSERZN#"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "HCP_A3",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "+18821.0-8.95255*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "HCP_A3",
+      "constituent_array": [["AL", "ZN"]],
+      "parameter_order": 3,
+      "pieces": [
+        {
+          "T_limits": [298.15, 6000.0],
+          "expression": "-702.8"
+        }
+      ]
+    }
+  ]
+}

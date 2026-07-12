@@ -1,0 +1,6 @@
+pycalphad
+espei
+scheil
+jsonschema
+pyyaml
+matplotlib

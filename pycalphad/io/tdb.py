@@ -913,11 +913,16 @@ def write_tdb(dbf, fd, groupby='subsystem', if_incompatible='warn'):
                                                         constituents,
                                                         param_to_write.parameter_order,
                                                         exprx)
+    def _param_sort_key(p):
+        const_names = tuple(tuple(sorted(spec.name.upper() for spec in subl)) for subl in p.constituent_array)
+        diff_sp_name = p.diffusing_species.name.upper() if (p.diffusing_species is not None and getattr(p.diffusing_species, "name", None) is not None) else ""
+        return (p.phase_name.upper(), p.parameter_type.upper(), p.complexity, const_names, p.parameter_order, diff_sp_name)
+
     if groupby == 'subsystem':
         for num_species in range(1, 5):
             subsystems = list(itertools.combinations(sorted([i.name.upper() for i in dbf.species]), num_species))
             for subsystem in subsystems:
-                parameters = sorted(param_sorted[subsystem])
+                parameters = sorted(param_sorted[subsystem], key=_param_sort_key)
                 if len(parameters) > 0:
                     output += "\n\n"
                     output += "$" * maxlen + "\n"
@@ -930,12 +935,12 @@ def write_tdb(dbf, fd, groupby='subsystem', if_incompatible='warn'):
         if len(dbf.species) > 4:
             subsystems = [k for k in param_sorted.keys() if len(k) > 4]
             for subsystem in subsystems:
-                parameters = sorted(param_sorted[subsystem])
+                parameters = sorted(param_sorted[subsystem], key=_param_sort_key)
                 for parameter in parameters:
                     output += write_parameter(parameter)
     elif groupby == 'phase':
         for phase_name in sorted(dbf.phases.keys()):
-            parameters = sorted(param_sorted[phase_name])
+            parameters = sorted(param_sorted[phase_name], key=_param_sort_key)
             if len(parameters) > 0:
                 output += "\n\n"
                 output += "$" * maxlen + "\n"

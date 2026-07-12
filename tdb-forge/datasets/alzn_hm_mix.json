@@ -1,0 +1,40 @@
+{
+  "components": ["AL", "ZN", "VA"],
+  "phases": ["LIQUID"],
+  "solver": {
+    "mode": "manual",
+    "sublattice_site_ratios": [1],
+    "sublattice_configurations": [
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]],
+      [["AL", "ZN"]]
+    ],
+    "sublattice_occupancies": [
+      [[0.9, 0.1]],
+      [[0.8, 0.2]],
+      [[0.7, 0.3]],
+      [[0.6, 0.4]],
+      [[0.5, 0.5]],
+      [[0.4, 0.6]],
+      [[0.3, 0.7]],
+      [[0.2, 0.8]],
+      [[0.1, 0.9]]
+    ]
+  },
+  "conditions": {
+    "P": 101325,
+    "T": [1000.0]
+  },
+  "output": "HM_MIX",
+  "values": [[
+    [941.8, 1674.4, 2197.7, 2511.6, 2616.3, 2511.6, 2197.7, 1674.4, 941.8]
+  ]],
+  "reference": "Mey1993",
+  "comment": "Calculated enthalpy of mixing using L0 = 10465.3 J/mol"
+}

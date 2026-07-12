@@ -37,6 +37,7 @@ requires-python = ">=3.11"
 # gives the C++ SymEngine library, while conda-forge/python-symengine
 # provides the Python package called `symengine`.
 dependencies = [
+    "kawin==0.5.0",
     "matplotlib>=3.3",
     "numpy>=1.13",
     "pint",
@@ -44,12 +45,14 @@ dependencies = [
     "pytest-cov",
     "pytest",
     "runtype",
+    "scheil==0.3.0",
     "scipy",
     "setuptools_scm[toml]>=6.0",
     "symengine>=0.9.2,<0.14",
     "tinydb>=3.8",
     "typing_extensions",
     "xarray>=0.11.2",
+    "fipy>=4.0.3",
 ]
 dynamic = ["version"]
 
@@ -105,6 +108,7 @@ markers = [
 norecursedirs = ["pycalphad/_dev"]
 filterwarnings = [
     "error",
+    "ignore::DeprecationWarning",
     "ignore:The type definition character*:UserWarning",
     "ignore:__array__ implementation doesn't accept a copy keyword, so passing copy=False failed.", # https://github.com/pydata/xarray/issues/9400
 ]

@@ -1,0 +1,1815 @@
+{
+  "doi": "10.1016/S0364-5916(01)00049-7",
+  "system": "Ni-Al",
+  "elements": [
+    "NI",
+    "AL"
+  ],
+  "phases": [
+    {
+      "name": "LIQUID",
+      "sublattices": [
+        1.0
+      ],
+      "constituents": [
+        [
+          "AL",
+          "NI"
+        ]
+      ]
+    },
+    {
+      "name": "AL3NI1",
+      "sublattices": [
+        0.75,
+        0.25
+      ],
+      "constituents": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ]
+      ]
+    },
+    {
+      "name": "AL3NI2",
+      "sublattices": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "constituents": [
+        [
+          "AL"
+        ],
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "NI",
+          "VA"
+        ]
+      ]
+    },
+    {
+      "name": "AL3NI5",
+      "sublattices": [
+        0.375,
+        0.625
+      ],
+      "constituents": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ]
+      ]
+    },
+    {
+      "name": "BCC_A2",
+      "sublattices": [
+        1.0,
+        3.0
+      ],
+      "constituents": [
+        [
+          "AL",
+          "NI",
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "model_hints": {
+        "ihj_magnetic_afm_factor": -1.0,
+        "ihj_magnetic_structure_factor": 0.4,
+        "ordered_phase": "BCC_B2",
+        "disordered_phase": "BCC_A2"
+      }
+    },
+    {
+      "name": "BCC_B2",
+      "sublattices": [
+        0.5,
+        0.5,
+        3.0
+      ],
+      "constituents": [
+        [
+          "AL",
+          "NI",
+          "VA"
+        ],
+        [
+          "AL",
+          "NI",
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "model_hints": {
+        "ordered_phase": "BCC_B2",
+        "disordered_phase": "BCC_A2",
+        "ihj_magnetic_afm_factor": -1.0,
+        "ihj_magnetic_structure_factor": 0.4
+      }
+    },
+    {
+      "name": "FCC_A1",
+      "sublattices": [
+        1.0,
+        1.0
+      ],
+      "constituents": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "model_hints": {
+        "ihj_magnetic_afm_factor": -3.0,
+        "ihj_magnetic_structure_factor": 0.28,
+        "ordered_phase": "FCC_L12",
+        "disordered_phase": "FCC_A1"
+      }
+    },
+    {
+      "name": "FCC_L12",
+      "sublattices": [
+        0.75,
+        0.25,
+        1.0
+      ],
+      "constituents": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "model_hints": {
+        "ordered_phase": "FCC_L12",
+        "disordered_phase": "FCC_A1",
+        "ihj_magnetic_afm_factor": -3.0,
+        "ihj_magnetic_structure_factor": 0.28
+      }
+    }
+  ],
+  "functions": [
+    {
+      "name": "F154T",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            4300.0
+          ],
+          "expression": "323947.58 - 25.1480943*T - 20.859*T*LN(T) - 24275.5*T**(-1.0) + 4.5665e-05*T**2.0 - 3.942e-09*T**3.0"
+        },
+        {
+          "T_limits": [
+            4300.0,
+            8200.0
+          ],
+          "expression": "342017.233 - 54.0526109*T - 17.7891*T*LN(T) - 14782200.0*T**(-1.0) + 6.822e-05*T**2.0 - 1.91111667e-08*T**3.0"
+        },
+        {
+          "T_limits": [
+            8200.0,
+            10000.0
+          ],
+          "expression": "542396.07 - 411.214335*T + 22.2419*T*LN(T) - 203669650.0*T**(-1.0) - 0.00349619*T**2.0 + 4.0491e-08*T**3.0"
+        }
+      ]
+    },
+    {
+      "name": "F625T",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            900.0
+          ],
+          "expression": "496408.232 + 35.479739*T - 41.6397*T*LN(T) + 85390.3*T**(-1.0) + 0.00249636*T**2.0 - 4.90507333e-07*T**3.0"
+        },
+        {
+          "T_limits": [
+            900.0,
+            2800.0
+          ],
+          "expression": "497613.221 + 17.368131*T - 38.85476*T*LN(T) - 5287.23*T**(-1.0) - 0.0002249805*T**2.0 - 9.49003167e-09*T**3.0"
+        }
+      ]
+    },
+    {
+      "name": "GBCCAL",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "10083.0 + GHSERAL - 4.813*T"
+        }
+      ]
+    },
+    {
+      "name": "LB2ALVA",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "150000.0"
+        }
+      ]
+    },
+    {
+      "name": "B2ALVA",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "10000.0 - 1.0*T"
+        }
+      ]
+    },
+    {
+      "name": "F13191T",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            800.0
+          ],
+          "expression": "417658.868 - 44.7777921*T - 20.056*T*LN(T) - 16320.0*T**(-1.0) - 0.0060415*T**2.0 + 1.24774e-06*T**3.0"
+        },
+        {
+          "T_limits": [
+            800.0,
+            3900.0
+          ],
+          "expression": "413885.448 + 9.41787679*T - 28.332*T*LN(T) + 289050.0*T**(-1.0) + 0.00173115*T**2.0 - 8.399e-08*T**3.0"
+        },
+        {
+          "T_limits": [
+            3900.0,
+            7600.0
+          ],
+          "expression": "440866.732 - 62.5810038*T - 19.819*T*LN(T) - 15879735.0*T**(-1.0) + 0.0005067*T**2.0 - 4.93233333e-08*T**3.0"
+        },
+        {
+          "T_limits": [
+            7600.0,
+            10000.0
+          ],
+          "expression": "848806.287 - 813.398164*T + 64.69*T*LN(T) - 387584600.0*T**(-1.0) - 0.00731865*T**2.0 + 8.71833333e-08*T**3.0"
+        }
+      ]
+    },
+    {
+      "name": "F13265T",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            800.0
+          ],
+          "expression": "638073.279 - 68.1901928*T - 24.897*T*LN(T) - 14215.0*T**(-1.0) - 0.0313584*T**2.0 + 5.93355333e-06*T**3.0"
+        },
+        {
+          "T_limits": [
+            800.0,
+            2100.0
+          ],
+          "expression": "611401.772 + 268.084821*T - 75.25401*T*LN(T) + 2633835.0*T**(-1.0) + 0.01088525*T**2.0 - 7.08741667e-07*T**3.0"
+        },
+        {
+          "T_limits": [
+            2100.0,
+            4500.0
+          ],
+          "expression": "637459.339 + 72.0712678*T - 48.587*T*LN(T) - 1191755.0*T**(-1.0) - 9.09e-05*T**2.0 + 9.12933333e-08*T**3.0"
+        },
+        {
+          "T_limits": [
+            4500.0,
+            6000.0
+          ],
+          "expression": "564540.781 + 329.599011*T - 80.11301*T*LN(T) + 29137900.0*T**(-1.0) + 0.00578085*T**2.0 - 1.08841667e-07*T**3.0"
+        }
+      ]
+    },
+    {
+      "name": "GBCCNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "8715.084 + GHSERNI - 3.556*T"
+        }
+      ]
+    },
+    {
+      "name": "LB2NIVA",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-64024.38 + 26.49419*T"
+        }
+      ]
+    },
+    {
+      "name": "B2NIVA",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "162397.3 - 27.40575*T"
+        }
+      ]
+    },
+    {
+      "name": "LB2ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-52440.88 + 11.30117*T"
+        }
+      ]
+    },
+    {
+      "name": "B2ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-152397.3 + 26.40575*T"
+        }
+      ]
+    },
+    {
+      "name": "ALNI3",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "3.0*U1ALNI"
+        }
+      ]
+    },
+    {
+      "name": "AL3NI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "3.0*U1ALNI"
+        }
+      ]
+    },
+    {
+      "name": "AL2NI2",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "4.0*U1ALNI"
+        }
+      ]
+    },
+    {
+      "name": "L04ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "U3ALNI"
+        }
+      ]
+    },
+    {
+      "name": "L14ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "U4ALNI"
+        }
+      ]
+    },
+    {
+      "name": "U3ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "name": "U4ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "7203.60609 - 3.7427303*T"
+        }
+      ]
+    },
+    {
+      "name": "U1ALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "2.0*UALNI*UNTIER"
+        }
+      ]
+    },
+    {
+      "name": "UNTIER",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "TROIS**(-1.0)"
+        }
+      ]
+    },
+    {
+      "name": "UALNI",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-22212.8931 + 4.39570389*T"
+        }
+      ]
+    },
+    {
+      "name": "TROIS",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "3.0"
+        }
+      ]
+    },
+    {
+      "name": "UN_ASS",
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            300.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.13,
+            933.6
+          ],
+          "expression": "11005.029 + GHSERAL - 11.841867*T + 7.934e-20*T**7.0"
+        },
+        {
+          "T_limits": [
+            933.6,
+            6000.0
+          ],
+          "expression": "10482.382 + GHSERAL - 11.253974*T + 1.231e+28*T**(-9.0)"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.13,
+            1728.0
+          ],
+          "expression": "16414.686 + GHSERNI - 9.397*T - 3.82318e-21*T**7.0"
+        },
+        {
+          "T_limits": [
+            1728.0,
+            6000.0
+          ],
+          "expression": "18290.88 + GHSERNI - 10.537*T - 1.12754e+31*T**(-9.0)"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-207109.28 + 41.31501*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-10185.79 + 5.8714*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ]
+      ],
+      "parameter_order": 2,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "81204.81 - 31.95713*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ]
+      ],
+      "parameter_order": 3,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "4365.35 - 2.51632*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "LIQUID",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ]
+      ],
+      "parameter_order": 4,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-22101.64 + 13.16341*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI1",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-48483.73 + 0.75*GHSERAL + 0.25*GHSERNI + 12.29913*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-39465.978 + 5.0*GBCCAL + GBCCNI + 7.89525*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-427191.9 + 3.0*GBCCAL + 3.0*GBCCNI + 79.21725*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "30000.0 + 5.0*GBCCAL - 3.0*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-357725.92 + 3.0*GBCCAL + 2.0*GBCCNI + 68.322*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "*"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-193484.18 + 131.79*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "*"
+        ],
+        [
+          "NI",
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-22001.7 + 7.0332*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "AL3NI5",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-55507.7594 + 0.375*GHSERAL + 0.625*GHSERNI + 7.2648103*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "GBCCAL"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "GBCCNI"
+        }
+      ]
+    },
+    {
+      "type": "TC",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "575.0"
+        }
+      ]
+    },
+    {
+      "type": "BMAGN",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.85"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "AL",
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "B2ALVA + LB2ALVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "B2ALNI + LB2ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_A2",
+      "constituent_array": [
+        [
+          "NI",
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "B2NIVA + LB2NIVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2ALNI - 0.5*LB2ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "VA"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2ALVA - 0.5*LB2ALVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2ALNI - 0.5*LB2ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "VA"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2NIVA - 0.5*LB2NIVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2ALVA - 0.5*LB2ALVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.5*B2NIVA - 0.5*LB2NIVA"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "BCC_B2",
+      "constituent_array": [
+        [
+          "VA"
+        ],
+        [
+          "VA"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "GHSERAL"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "GHSERNI"
+        }
+      ]
+    },
+    {
+      "type": "TC",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "633.0"
+        }
+      ]
+    },
+    {
+      "type": "BMAGN",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.52"
+        }
+      ]
+    },
+    {
+      "type": "TC",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-1112.0"
+        }
+      ]
+    },
+    {
+      "type": "TC",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "1745.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-162407.75 + 16.212965*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "73417.798 - 34.914168*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 2,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "33471.014 - 9.8373558*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_A1",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 3,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-30758.01 + 10.25267*T"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "ALNI3"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "AL3NI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "NI"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "0.0"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "1.5*AL2NI2 + 1.5*AL3NI - 1.5*ALNI3"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "AL"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "-1.5*AL2NI2 + 1.5*AL3NI + 0.5*ALNI3"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "1.5*AL2NI2 - 1.5*AL3NI + 1.5*ALNI3"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "1.5*AL2NI2 - 0.5*AL3NI - 1.5*ALNI3"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "*"
+        ],
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "L04ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "*"
+        ],
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "L14ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "*"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "3.0*L04ALNI"
+        }
+      ]
+    },
+    {
+      "type": "G",
+      "phase": "FCC_L12",
+      "constituent_array": [
+        [
+          "AL",
+          "NI"
+        ],
+        [
+          "*"
+        ],
+        [
+          "VA"
+        ]
+      ],
+      "parameter_order": 1,
+      "pieces": [
+        {
+          "T_limits": [
+            298.15,
+            6000.0
+          ],
+          "expression": "3.0*L14ALNI"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "doi": "10.1016/S0964-1807(03)00084-2",
+  "system": "Al-Mg-Si-Sc-Zr-Fe-mobility",
+  "elements": ["AL", "MG", "SI", "SC", "ZR", "FE"],
+  "phases": [
+    {
+      "name": "FCC_A1",
+      "sublattices": [1.0, 1.0],
+      "constituents": [["AL", "MG", "SI", "SC", "ZR", "FE"], ["VA"]]
+    }
+  ],
+  "functions": [],
+  "parameters": [
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "AL",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-142000 + 8.31451 * T * LN(1.47E-4)"
+        }
+      ]
+    },
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "MG",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-120500 + 8.31451 * T * LN(1.49E-4)"
+        }
+      ]
+    },
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "SI",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-124000 + 8.31451 * T * LN(2.02E-4)"
+        }
+      ]
+    },
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "SC",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-173000 + 8.31451 * T * LN(5.31E-4)"
+        }
+      ]
+    },
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "ZR",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-242000 + 8.31451 * T * LN(7.28E-4)"
+        }
+      ]
+    },
+    {
+      "type": "MQ",
+      "phase": "FCC_A1",
+      "constituent_array": [["AL"], ["VA"]],
+      "diffusing_species": "FE",
+      "parameter_order": 0,
+      "pieces": [
+        {
+          "T_limits": [298.15, 3000.0],
+          "expression": "-220000 + 8.31451 * T * LN(3.32E-2)"
+        }
+      ]
+    }
+  ]
+}
