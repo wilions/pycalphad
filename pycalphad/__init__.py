@@ -1,6 +1,5 @@
 import warnings
-warnings.filterwarnings('ignore', message='divide by zero encountered in log')
-warnings.filterwarnings('ignore', message='invalid value encountered in true_divide')
+
 
 from pycalphad.core.errors import *
 import pycalphad.variables as v

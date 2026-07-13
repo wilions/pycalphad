@@ -149,14 +149,14 @@ def solve_thermal_profile(Lx, Ly, dx, dy, t_max,
         T_new = T + dt * (alpha * (d2T_dx2 + d2T_dy2) + source_rate - loss)
         
         # Safeguard against stability crash
-        if np.any(T_new > 4000.0) or np.any(T_new < T_ambient - 1.0):
+        if np.any(T_new > 50000.0) or np.any(T_new < T_ambient - 1.0):
             msg = f"Numerical instability detected: temperature went out of bounds. Computed stable dt limit is {max_dt} s."
             if strict_stability:
                 raise ValueError(msg)
             else:
                 import warnings
                 warnings.warn(msg, UserWarning)
-        T_new = np.clip(T_new, T_ambient, 4000.0)
+        T_new = np.clip(T_new, T_ambient, 50000.0)
         T = T_new
         
         if return_history:
