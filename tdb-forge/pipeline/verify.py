@@ -48,7 +48,8 @@ def verify_t2_thermo_kinetic(db_path, system_name, elements, checks_config, repo
     report_lines = [f"# Verification Report for {system_name}", ""]
     all_passed = True
     
-    # 1. Plot Phase Diagram
+    # 1. Plot Phase Diagram and capture strategy for invariant checks
+    strategy = None
     if len(elements) == 2:
         try:
             print(f"[T2] Plotting phase diagram for {elements}")
@@ -56,15 +57,35 @@ def verify_t2_thermo_kinetic(db_path, system_name, elements, checks_config, repo
             ax = fig.gca()
             
             # Setup conditions
-            phases = list(db.phases.keys())
-            # Use binplot
+            # If database lacks pure elements from backbone, merge backbone for mapping
+            eval_db = db
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            backbone_path = os.path.join(project_root, 'pycalphad/tests/databases/COST507.tdb')
+            if not os.path.exists(backbone_path):
+                backbone_path = os.path.abspath(os.path.join(project_root, '../pycalphad/tests/databases/COST507.tdb'))
+            if os.path.exists(backbone_path):
+                try:
+                    from pipeline.merge import merge_databases
+                    temp_merged = os.path.join(report_dir, "_temp_eval.tdb")
+                    entry_stub = {"system": system_name, "type": "thermodynamic", "supersede_constituents": [elements]}
+                    merge_databases(backbone_path, db_path, entry_stub, temp_merged)
+                    eval_db = Database(temp_merged)
+                except Exception as e_merge:
+                    print(f"[T2] Note: Using unmerged db for plotting/invariants: {e_merge}")
+
+            phases = list(eval_db.phases.keys())
             T_min = checks_config.get('T_plot_limits', [300, 1000])[0]
             T_max = checks_config.get('T_plot_limits', [300, 1000])[1]
-            binplot(db, elements + ['VA'], phases, {X(elements[1]): (0, 1, 0.02), T: (T_min, T_max, 10), P: 101325}, ax=ax)
+            ax, strategy = binplot(
+                eval_db, elements + ['VA'], phases,
+                {X(elements[1]): (0, 1, 0.02), T: (T_min, T_max, 10), P: 101325},
+                plot_kwargs={'ax': ax},
+                return_strategy=True
+            )
             
             plot_path = os.path.join(report_dir, f"{system_name.lower()}_phase_diagram.png")
-            plt.savefig(plot_path, dpi=150)
-            plt.close()
+            ax.get_figure().savefig(plot_path, dpi=150)
+            plt.close(fig)
             print(f"[T2] Saved phase diagram to {plot_path}")
             report_lines.append(f"## Phase Diagram Plot\n![Phase Diagram]({os.path.basename(plot_path)})\n")
         except Exception as e:
@@ -78,16 +99,44 @@ def verify_t2_thermo_kinetic(db_path, system_name, elements, checks_config, repo
         report_lines.append("| Reaction Type | Literature T (K) | Computed T (K) | Diff | Status |")
         report_lines.append("| --- | --- | --- | --- | --- |")
         
+        computed_invariants = []
+        if strategy is not None:
+            try:
+                inv_data_list = strategy.get_invariant_data(X(elements[1]), T)
+                for inv_item in inv_data_list:
+                    if hasattr(inv_item, 'ylim') and len(inv_item.ylim) > 0:
+                        computed_invariants.append(float(inv_item.ylim[0]))
+                    elif hasattr(inv_item, 'y') and len(inv_item.y) > 0:
+                        computed_invariants.append(float(np.mean(inv_item.y)))
+            except Exception as e_inv:
+                print(f"[T2] Warning: Extraction of invariant data failed: {e_inv}")
+
         for inv in invariants:
-            # Check local equilibrium or calculated invariant temperatures
-            # For simplicity, we compare calculated phase fraction / stability near the reported T
-            lit_T = inv['T']
+            lit_T = float(inv['T'])
             reaction_type = inv['type']
+            tol_K = float(inv.get('tol_K', 5.0))
             
-            # We can check which phase has lower energy at T_lit - 1 and T_lit + 1
-            # to verify transition is at the correct temperature.
-            print(f"[T2] Checking invariant transition near {lit_T} K")
-            report_lines.append(f"| {reaction_type} | {lit_T} | Near {lit_T} (verified) | 0.0 | PASS |")
+            print(f"[T2] Checking invariant transition near {lit_T} K (tol={tol_K} K)")
+            if computed_invariants:
+                diffs = [comp_T - lit_T for comp_T in computed_invariants]
+                min_idx = int(np.argmin([abs(d) for d in diffs]))
+                closest_T = computed_invariants[min_idx]
+                closest_diff = diffs[min_idx]
+                
+                if abs(closest_diff) <= tol_K:
+                    status = "PASS"
+                    print(f"[T2] [PASS] {reaction_type} at literature {lit_T} K: computed {closest_T:.2f} K (diff {closest_diff:+.2f} K)")
+                else:
+                    status = "FAIL"
+                    all_passed = False
+                    print(f"[T2] [FAIL] {reaction_type} at literature {lit_T} K: closest computed {closest_T:.2f} K outside tolerance {tol_K} K (diff {closest_diff:+.2f} K)")
+                report_lines.append(f"| {reaction_type} | {lit_T} | {closest_T:.2f} | {closest_diff:+.2f} | {status} |")
+            else:
+                status = "FAIL"
+                all_passed = False
+                print(f"[T2] [FAIL] {reaction_type} at literature {lit_T} K: no computed invariants found")
+                report_lines.append(f"| {reaction_type} | {lit_T} | N/A | N/A | FAIL |")
+
             
     # 3. Kinetic / Diffusivity checks
     mobility_checks = checks_config.get('mobility_checks', [])

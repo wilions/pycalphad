@@ -1,40 +1,25 @@
+import warnings
+import logging
 import numpy as np
 import pycalphad
 from pycalphad import equilibrium
 import pycalphad.variables as v
 from fipy import Grid1D, CellVariable, TransientTerm, DiffusionTerm
 
+logger = logging.getLogger(__name__)
+
 class BinaryDiffusionSimulation:
     """
-    1D Binary Diffusion Simulator coupling pycalphad and FiPy.
+    1D Binary Diffusion Simulator coupling pycalphad and FiPy (Deprecated: use DiffusionCoupleSimulation instead).
     """
     def __init__(self, dbf, comps, phase, T, Lx, nx, x_left, x_right, 
                  mobility_A=1.0e-13, mobility_B=1.0e-13):
-        """
-        Parameters
-        ----------
-        dbf : Database
-            Thermodynamic database.
-        comps : list of str
-            Components of interest (e.g., ['AL', 'ZN', 'VA']).
-            The first component is treated as A (balance), and the second is B (independent).
-        phase : str
-            The phase to perform diffusion simulation in (e.g., 'FCC_A1').
-        T : float
-            Simulation temperature in Kelvin.
-        Lx : float
-            Length of the 1D diffusion couple (meters).
-        nx : int
-            Number of spatial grid points.
-        x_left : float
-            Initial independent mole fraction x_B on the left half of the couple.
-        x_right : float
-            Initial independent mole fraction x_B on the right half of the couple.
-        mobility_A : float or callable
-            Mobility of component A (m^2*mol/J/s) or constant float.
-        mobility_B : float or callable
-            Mobility of component B (m^2*mol/J/s) or constant float.
-        """
+        warnings.warn(
+            "BinaryDiffusionSimulation is deprecated and will be removed in a future release. "
+            "Please use pycalphad.diffusion.couple.DiffusionCoupleSimulation instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
         self.dbf = dbf
         # Filter active components (remove VA if present to identify elements A and B)
         self.elements = [c for c in comps if c != 'VA']
@@ -56,7 +41,8 @@ class BinaryDiffusionSimulation:
         
         # 1. Pre-calculate chemical potentials using a vectorized equilibrium call
         # to construct fast interpolating functions for thermodynamic derivatives.
-        print("Pre-calculating thermodynamic functions...")
+        logger.info("Pre-calculating thermodynamic functions...")
+
         x_grid = np.linspace(0.005, 0.995, 200)
         conditions = {
             v.T: self.T,

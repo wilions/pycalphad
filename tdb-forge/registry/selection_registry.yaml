@@ -5,6 +5,13 @@ entries:
     path: "extracted/alsc_thermo.json"
     supersede_constituents:
       - ["AL", "SC"]
+    verification:
+      T_plot_limits: [300, 1000]
+      invariants:
+        - type: "Eutectic"
+          T: 933.0
+          tol_K: 5.0
+      mobility_checks: []
   - doi: "10.1016/S0964-1807(03)00084-2"
     system: "Al-Mg-Si-Sc-Zr-Fe-mobility"
     type: "mobility"
@@ -16,3 +23,33 @@ entries:
       - ["AL", "SC"]
       - ["AL", "ZR"]
       - ["AL", "FE"]
+    verification:
+      T_plot_limits: [300, 1000]
+      invariants: []
+      mobility_checks:
+        - element: "MG"
+          phase: "FCC_A1"
+          T: 700.0
+          D0: 1.49e-4
+          Q: 120500.0
+        - element: "SI"
+          phase: "FCC_A1"
+          T: 700.0
+          D0: 2.02e-4
+          Q: 124000.0
+        - element: "SC"
+          phase: "FCC_A1"
+          T: 700.0
+          D0: 5.31e-4
+          Q: 173000.0
+        - element: "ZR"
+          phase: "FCC_A1"
+          T: 700.0
+          D0: 7.28e-4
+          Q: 242000.0
+        - element: "FE"
+          phase: "FCC_A1"
+          T: 700.0
+          D0: 3.32e-2
+          Q: 220000.0
+

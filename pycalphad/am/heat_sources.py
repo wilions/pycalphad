@@ -90,7 +90,6 @@ class ConicalHeatSource:
         rc_z = self.re - (self.re - self.ri) * (z / self.H)
         
         # Normalization factor for power density conservation
-        volume_integral = np.pi * self.H * (self.re**2 + self.re * self.ri + self.ri**2) / 3.0
         coeff = (9.0 * self.power * self.absorptivity) / (np.pi * self.H * (self.re**2 + self.re * self.ri + self.ri**2))
         
         # Compute exponential distribution

@@ -1,5 +1,9 @@
+import logging
 import numpy as np
 import matplotlib.pyplot as plt
+
+logger = logging.getLogger(__name__)
+
 from tinydb import where
 from kawin.thermo import BinaryThermodynamics, MulticomponentThermodynamics
 from kawin.precipitation import PrecipitateParameters, MatrixParameters, PrecipitateModel
@@ -221,6 +225,6 @@ class PrecipitationKineticsSimulation:
         
         if save_path:
             plt.savefig(save_path, dpi=150)
-            print(f"Saved precipitation kinetics plot to {save_path}")
+            logger.info(f"Saved precipitation kinetics plot to {save_path}")
         else:
             plt.show()

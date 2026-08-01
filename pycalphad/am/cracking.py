@@ -121,7 +121,7 @@ def calculate_rdg_index(temperatures, fraction_solid):
     from scipy.integrate import trapezoid
     return float(trapezoid(int_sort, t_sort))
 
-def susceptibility_from_composition(dbf, comps, phases, composition, indices=('kou', 'csc', 'freezing_range', 'tfr', 'rdg'), step=1.0):
+def susceptibility_from_composition(dbf, comps, phases, composition, indices=('kou', 'csc', 'freezing_range', 'tfr', 'rdg'), step=1.0, T_high=2000.0, T_low=300.0):
     """
     Perform a Scheil solidification simulation and compute requested cracking susceptibility indices.
     
@@ -139,6 +139,10 @@ def susceptibility_from_composition(dbf, comps, phases, composition, indices=('k
         The indices to calculate ('kou', 'csc', 'freezing_range', 'tfr', 'rdg').
     step : float
         Temperature step size.
+    T_high : float
+        Upper temperature search bound for liquidus determination.
+    T_low : float
+        Lower temperature search bound for liquidus determination.
         
     Returns
     -------
@@ -147,7 +151,7 @@ def susceptibility_from_composition(dbf, comps, phases, composition, indices=('k
     res : SolidificationResult
         Full solidification results.
     """
-    res = simulate_solidification(dbf, comps, phases, composition, mode='scheil', step=step)
+    res = simulate_solidification(dbf, comps, phases, composition, mode='scheil', step=step, T_high=T_high, T_low=T_low)
     
     results = {}
     temps = res.temperatures

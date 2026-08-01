@@ -5,7 +5,6 @@ from scipy.interpolate import CubicSpline
 from pycalphad import variables as v, equilibrium
 from kawin.thermo import MulticomponentThermodynamics, BinaryThermodynamics
 from kawin.thermo.Mobility import (
-    tracer_diffusivity as kawin_tracer_diffusivity,
     interdiffusivity as kawin_interdiffusivity,
     interdiffusivity_from_diff as kawin_interdiffusivity_from_diff
 )
@@ -209,13 +208,6 @@ class MobilityModel:
         else:
             # For multicomponent systems, use Kawin's analytical Hessian formulation
             if self.therm.mobCallables[self.phase]:
-                Dnkj, _, _ = kawin_tracer_diffusivity(
-                    result.chemical_potentials, cs, self.ref_element, 
-                    mobility_callables=mob_calls, 
-                    parameters=self.therm._parameters
-                )
-                # Note: kawin_tracer_diffusivity in inverseMobility actually computes interdiffusivity
-                # Let's call the correct kawin function or compute it using our callables
                 from kawin.thermo.Mobility import inverseMobility
                 Dnkj, _, _ = inverseMobility(
                     result.chemical_potentials, cs, self.ref_element,

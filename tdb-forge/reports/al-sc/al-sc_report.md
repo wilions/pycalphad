@@ -6,4 +6,4 @@
 ## Invariant Reaction Checks
 | Reaction Type | Literature T (K) | Computed T (K) | Diff | Status |
 | --- | --- | --- | --- | --- |
-| Eutectic | 933.0 | Near 933.0 (verified) | 0.0 | PASS |
+| Eutectic | 933.0 | 933.21 | +0.21 | PASS |

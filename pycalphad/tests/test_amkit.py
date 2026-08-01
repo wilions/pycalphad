@@ -26,6 +26,18 @@ def test_solidification_service():
     assert res.T_solidus_scheil < 750.0
     assert isinstance(res.partial, bool)
 
+def test_rhea_refractory_liquidus_temperature():
+    db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../examples/databases/TiZrHfNb_RHEA.tdb'))
+    dbf = Database(db_path)
+    comps = ['TI', 'ZR', 'HF', 'NB', 'VA']
+    phases = list(dbf.phases.keys())
+    composition = {'ZR': 0.25, 'HF': 0.25, 'NB': 0.25}
+
+    T_liq = find_liquidus_temperature(dbf, comps, phases, composition)
+    assert T_liq > 2000.0
+    assert T_liq != 2000.0
+
+
 def test_mobility_service():
     # Load diffusion TDB containing HCP_A3 mobility parameters for Al-Mg
     db_path = str(files(pycalphad.tests.databases).joinpath("diffusion.tdb"))

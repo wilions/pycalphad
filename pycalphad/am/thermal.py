@@ -100,6 +100,7 @@ def solve_thermal_profile(Lx, Ly, dx, dy, t_max,
     source = GaussianHeatSource(laser_power, absorptivity, beam_radius)
     
     # Time loop (Explicit Euler integration)
+    instability_count = 0
     for step in range(1, nt):
         t = t_axis[step]
         
@@ -150,17 +151,22 @@ def solve_thermal_profile(Lx, Ly, dx, dy, t_max,
         
         # Safeguard against stability crash
         if np.any(T_new > 50000.0) or np.any(T_new < T_ambient - 1.0):
+            instability_count += 1
             msg = f"Numerical instability detected: temperature went out of bounds. Computed stable dt limit is {max_dt} s."
-            if strict_stability:
+            if strict_stability or instability_count > 10:
                 raise ValueError(msg)
             else:
                 import warnings
                 warnings.warn(msg, UserWarning)
+        else:
+            instability_count = 0
+
         T_new = np.clip(T_new, T_ambient, 50000.0)
         T = T_new
         
         if return_history:
             T_history.append(T.copy())
+
             
     if return_history:
         return X, Y, T, t_axis, T_history
