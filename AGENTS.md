@@ -1,5 +1,11 @@
 # Agent Instructions — PyCalphad
 
+> [!IMPORTANT]
+> **HARD RULE — REPOSITORY BOUNDARY & OUTPUT LOCATION**:
+> - Store **ONLY source code, test files, examples, tools, documentation, and package configuration** (`pycalphad/`, `docs/`, `examples/`, `tools/`, `tdb-forge/`, `pyproject.toml`, `setup.py`, `README.rst`, `AGENTS.md`, `LICENSE.txt`) inside `/Users/pei/My Drive/Antigravity/Alloy Agents/PyCalphad`.
+> - **DO NOT store any other files** (diagrams, `.drawio` files, PNGs, research reports, process maps, study plans, simulation output files, or benchmark artifacts) inside this folder.
+> - All non-source files and task outputs **MUST** be placed directly under `/Users/pei/My Drive/Antigravity/Alloy Agents/Reports/`.
+
 You are working in **PyCalphad**, the core CALPHAD thermodynamic computation engine, equilibrium solver, and Additive Manufacturing (AM) simulation framework.
 
 ## Strict Repository & Output Directory Rule
