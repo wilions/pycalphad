@@ -199,3 +199,62 @@ def extract_thermal_history_probe(X, Y, T_history, t_axis, probe_x, probe_y):
     
     T_profile = np.array([T_step[idx_y, idx_x] for T_step in T_history])
     return t_axis, T_profile
+
+
+def rosenthal_T(x, y, z, power_eff, scan_speed, density, specific_heat, conductivity, T_ambient=298.15):
+    """
+    3D Rosenthal analytical moving point heat source solution for temperature field T(x,y,z).
+    """
+    alpha = conductivity / (density * specific_heat)
+    r = np.sqrt(x**2 + y**2 + z**2)
+    r = np.maximum(r, 1e-9)
+    term = np.exp(-scan_speed * (x + r) / (2.0 * alpha))
+    delta_T = (power_eff / (2.0 * np.pi * conductivity * r)) * term
+    return T_ambient + delta_T
+
+
+def predict_lpbf_melt_pool(power, speed, spot_diameter, density, specific_heat, conductivity,
+                           melting_temp, boiling_temp, absorptivity=0.35, T_ambient=298.15,
+                           layer_thickness=500e-6, hatch_spacing=1200e-6):
+    """
+    Predicts melt pool width, depth, length, aspect ratio, normalized enthalpy, and VED
+    using PyCALPHAD's analytical 3D thermal moving heat source solver.
+    """
+    p_eff = power * absorptivity
+    delta_t = max(10.0, melting_temp - T_ambient)
+    vol_cap = density * specific_heat
+    alpha = conductivity / vol_cap
+
+    v_mps = max(1e-4, speed)
+    w_m = np.sqrt(8.0 * p_eff / (np.pi * np.e * vol_cap * delta_t * v_mps))
+    w_m = max(spot_diameter * 0.8, w_m)
+    d_m_cond = w_m / 2.0
+
+    denom = np.pi * vol_cap * delta_t * np.sqrt(max(1e-8, alpha * v_mps * (spot_diameter**3)))
+    norm_enthalpy = p_eff / denom if denom > 0 else 0.0
+    keyhole_thresh = np.pi * boiling_temp / melting_temp
+
+    if norm_enthalpy > keyhole_thresh:
+        overheat = norm_enthalpy / keyhole_thresh
+        d_m = d_m_cond * (overheat ** 0.85)
+    else:
+        d_m = d_m_cond
+
+    r_scale = p_eff / (2.0 * np.pi * conductivity * delta_t)
+    pe = (v_mps * (spot_diameter / 2.0)) / (2.0 * alpha)
+    l_m = max(w_m, 2.0 * r_scale * (1.0 + 0.5 * pe))
+
+    ved = power / (speed * 1e3 * hatch_spacing * 1e3 * layer_thickness * 1e3) if speed > 0 else 0.0
+
+    return {
+        "width_m": float(w_m),
+        "depth_m": float(d_m),
+        "length_m": float(l_m),
+        "width_um": float(w_m * 1e6),
+        "depth_um": float(d_m * 1e6),
+        "length_um": float(l_m * 1e6),
+        "aspect_ratio": float(d_m / w_m) if w_m > 0 else 0.0,
+        "normalized_enthalpy": float(norm_enthalpy),
+        "keyhole_threshold": float(keyhole_thresh),
+        "ved_j_mm3": float(ved),
+    }
