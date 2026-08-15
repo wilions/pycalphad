@@ -76,22 +76,40 @@ TDB_PARAM_TYPES = sorted([
     'BMAGN',  # Bohr magneton number
     'GD',     # Gibbs energy difference between liquid and amorphous states
     'THETA',  # Einstein temperature (log)
-    # Molar volume parameters
-    'V0',     # Molar volume at STP
+    # Molar volume & thermal expansion parameters
+    'VM',     # Molar volume
+    'V0',     # Molar volume at STP / reference temperature
     'VA',     # Integrated thermal expansivity
+    'VB',     # Thermal expansivity coefficient
     'VC',     # High-pressure fitting parameter
     'VK',     # Isothermal compressibility
-    # Property model parameters
+    'VOL',    # Generic volume parameter
+    # Elasticity tensor & mechanical property parameters
+    'C11',    # Elastic stiffness constant C11
+    'C12',    # Elastic stiffness constant C12
+    'C44',    # Elastic stiffness constant C44
+    'C13',    # Elastic stiffness constant C13
+    'C33',    # Elastic stiffness constant C33
+    'C14',    # Elastic stiffness constant C14
+    'C15',    # Elastic stiffness constant C15
+    'C66',    # Elastic stiffness constant C66
+    'ELAS',   # Elastic modulus
+    'YOUNG',  # Young's modulus
+    'SHEAR',  # Shear modulus
+    'BULK',   # Bulk modulus
+    'POIS',   # Poisson's ratio
+    # Thermophysical & transport property parameters
     'VISC',   # Viscosity, RT*log(viscosity)
     'ELRS',   # Electric resistivity
     'THCD',   # Thermal Conductivity
     'SIGM',   # Surface tension of a liquid endmember
+    'SIGMA',  # Surface tension
     'XI',     # Surface tension dampening factor for a constituent
-    # Mobility parameters
+    # Mobility & diffusion parameters
     'MQ',     # Activation enthalpy for mobility
     'MF',     # Pre-exponential factor for mobility
     'DQ',     # Activation enthalpy for diffusivity
-    'DF',     # Pre-expontential factor for diffusivity
+    'DF',     # Pre-exponential factor for diffusivity
     'VS',     # Volume per mole of volume-carrying species
 ])
 

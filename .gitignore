@@ -55,8 +55,17 @@ env/
 *.sublime-project
 *.sublime-workspace
 *.cpp
-tdb-forge/reports/architecture/test_layout.drawio
-tdb-forge/reports/architecture/pycalphad_architecture_backup.drawio
 *_temp_eval.tdb
 temp_verify_alsc.tdb
 
+# Reports & Task Artifacts (Hard rule: All non-source outputs go to /Reports/)
+reports/
+*_report.md
+*_REPORT.md
+*_SUMMARY.md
+PLAN.md
+*.drawio
+*.prof
+*.lprof
+*.log
+.DS_Store

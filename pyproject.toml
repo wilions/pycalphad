@@ -80,28 +80,13 @@ dev = [
     "wheel",
 ]
 
-[tool.setuptools]
-# Do not include pycalphad._dev here as it should not be distributed
-packages = [
-    "pycalphad.am",
-    "pycalphad.amkit",
-    "pycalphad.diffusion",
-    "pycalphad.precipitation",
-    "pycalphad.codegen",
-    "pycalphad.core",
-    "pycalphad.io",
-    "pycalphad.mapping.strategy",
-    "pycalphad.mapping",
-    "pycalphad.models",
-    "pycalphad.plot.binary",
-    "pycalphad.plot",
-    "pycalphad.property_framework",
-    "pycalphad.tests.databases",
-    "pycalphad.tests",
-    "pycalphad",
-]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pycalphad*"]
+exclude = ["pycalphad._dev*"]
 
 [tool.setuptools.package-data]
+"pycalphad" = ["py.typed"]
 "pycalphad.core" = ["*.pxd"]
 "pycalphad.tests.databases" = ["*"]
 

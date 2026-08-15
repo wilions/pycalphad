@@ -45,6 +45,57 @@ cpm_implementation_units = CPM_implementation_units = 'J / mol / K'
 cpm_display_units = CPM_display_units = 'J / mol / K'
 cpm_display_name = CPM_display_name = 'Heat Capacity'
 
+# Molar volume and thermal expansion
+VM_implementation_units = molar_volume_implementation_units = 'm**3 / mol'
+VM_display_units = molar_volume_display_units = 'cm**3 / mol'
+VM_display_name = molar_volume_display_name = 'Molar Volume'
+
+V0_implementation_units = 'm**3 / mol'
+V0_display_units = 'cm**3 / mol'
+V0_display_name = 'Reference Molar Volume'
+
+CTE_implementation_units = thermal_expansion_implementation_units = '1 / K'
+CTE_display_units = thermal_expansion_display_units = '1e-6 / K'
+CTE_display_name = thermal_expansion_display_name = 'Coefficient of Thermal Expansion'
+
+# Elastic moduli & mechanical properties
+youngs_modulus_implementation_units = E_implementation_units = 'Pa'
+youngs_modulus_display_units = E_display_units = 'GPa'
+youngs_modulus_display_name = E_display_name = "Young's Modulus"
+
+shear_modulus_implementation_units = G_modulus_implementation_units = 'Pa'
+shear_modulus_display_units = G_modulus_display_units = 'GPa'
+shear_modulus_display_name = G_modulus_display_name = 'Shear Modulus'
+
+bulk_modulus_implementation_units = K_modulus_implementation_units = 'Pa'
+bulk_modulus_display_units = K_modulus_display_units = 'GPa'
+bulk_modulus_display_name = K_modulus_display_name = 'Bulk Modulus'
+
+poissons_ratio_implementation_units = nu_implementation_units = 'dimensionless'
+poissons_ratio_display_units = nu_display_units = 'dimensionless'
+poissons_ratio_display_name = nu_display_name = "Poisson's Ratio"
+
+# Transport & interface properties
+surface_tension_implementation_units = SIGMA_implementation_units = 'N / m'
+surface_tension_display_units = SIGMA_display_units = 'mN / m'
+surface_tension_display_name = SIGMA_display_name = 'Surface Tension'
+
+viscosity_implementation_units = VISC_implementation_units = 'Pa * s'
+viscosity_display_units = VISC_display_units = 'mPa * s'
+viscosity_display_name = VISC_display_name = 'Dynamic Viscosity'
+
+thermal_conductivity_implementation_units = THCD_implementation_units = 'W / m / K'
+thermal_conductivity_display_units = THCD_display_units = 'W / m / K'
+thermal_conductivity_display_name = THCD_display_name = 'Thermal Conductivity'
+
+electrical_conductivity_implementation_units = 'S / m'
+electrical_conductivity_display_units = 'MS / m'
+electrical_conductivity_display_name = 'Electrical Conductivity'
+
+electrical_resistivity_implementation_units = ELRS_implementation_units = 'ohm * m'
+electrical_resistivity_display_units = ELRS_display_units = 'microohm * cm'
+electrical_resistivity_display_name = ELRS_display_name = 'Electrical Resistivity'
+
 def _conversions_per_formula_unit(compset):
     components = compset.phase_record.nonvacant_elements
     num_components = len(components)

@@ -8,6 +8,7 @@ from pycalphad.io.database import Database
 # Trigger format extension hooks
 import pycalphad.io.tdb
 import pycalphad.io.cs_dat
+import pycalphad.io.calphad_ir
 
 from pycalphad.model import Model, ReferenceState
 
