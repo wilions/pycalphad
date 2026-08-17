@@ -12,6 +12,7 @@ from .cracking import (
 from .heat_sources import GaussianHeatSource, DoubleEllipsoidalHeatSource, ConicalHeatSource
 from .thermal import solve_thermal_profile, extract_thermal_history_probe, rosenthal_T, predict_lpbf_melt_pool
 from .thermal3d import Thermal3DSimulation
+from .thermal_history import MultiPassThermalAccumulator, ScanTrack, MultiPassThermalHistoryResult
 from .schemas import ThermalHistory, MicrostructureState, SimulationResult
 
 __all__ = [
@@ -32,7 +33,11 @@ __all__ = [
     "rosenthal_T",
     "predict_lpbf_melt_pool",
     "Thermal3DSimulation",
+    "MultiPassThermalAccumulator",
+    "ScanTrack",
+    "MultiPassThermalHistoryResult",
     "ThermalHistory",
     "MicrostructureState",
     "SimulationResult",
 ]
+

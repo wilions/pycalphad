@@ -18,6 +18,7 @@ from pycalphad.core.workspace import Workspace
 from pycalphad.plot.eqplot import eqplot
 from pycalphad.property_framework import as_property
 from pycalphad.mapping.compat_api import binplot, ternplot
+from pycalphad.io.consistency import verify_thermodynamic_consistency, ConsistencyReport, ConsistencyIssue, CheckSeverity
 
 # Set the version of pycalphad
 try:

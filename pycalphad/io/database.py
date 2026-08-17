@@ -501,3 +501,16 @@ class Database(object): #pylint: disable=R0902
         result = self._parameters.insert_multiple(self._parameter_queue)
         self._parameter_queue = []
         return result
+
+    def verify_consistency(self, **kwargs):
+        """
+        Verify thermodynamic consistency and AST integrity of this database.
+
+        Returns
+        -------
+        ConsistencyReport
+            Structured report detailing all validity checks, warnings, and errors.
+        """
+        from pycalphad.io.consistency import verify_thermodynamic_consistency
+        return verify_thermodynamic_consistency(self, **kwargs)
+
