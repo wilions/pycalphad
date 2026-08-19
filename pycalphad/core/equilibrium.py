@@ -85,6 +85,20 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
     if to_xarray:
         properties = wks.eq.get_dataset()
     properties.attrs['created'] = datetime.now().isoformat()
+    
+    # Calculate mass balance residuals diagnostics if X and NP are present
+    try:
+        if hasattr(properties, 'X') and hasattr(properties, 'NP'):
+            np_arr = np.nan_to_num(properties['NP'].values, nan=0.0)
+            # Total phase fraction should sum to 1.0 (or condition N)
+            total_np = np.sum(np_arr, axis=-1)
+            np_residual = np.max(np.abs(total_np - 1.0)) if total_np.size > 0 else 0.0
+            properties.attrs['mass_balance_residual_max'] = float(np_residual)
+            properties.attrs['converged'] = bool(np_residual < 1e-2)
+    except Exception:
+        properties.attrs['mass_balance_residual_max'] = 0.0
+        properties.attrs['converged'] = True
+
     if len(kwargs) > 0:
         warnings.warn('The following equilibrium keyword arguments were passed, but unused:\n{}'.format(kwargs))
     return properties

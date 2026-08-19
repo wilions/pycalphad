@@ -14,6 +14,8 @@ from pycalphad.model import Model, ReferenceState
 
 from pycalphad.core.calculate import calculate
 from pycalphad.core.equilibrium import equilibrium
+from pycalphad.core.batch_equilibrium import batch_equilibrium, evaluate_composition_grid
+from pycalphad.core.sensitivity import compute_gibbs_composition_gradient, compute_temperature_entropy_derivative
 from pycalphad.core.workspace import Workspace
 from pycalphad.plot.eqplot import eqplot
 from pycalphad.property_framework import as_property

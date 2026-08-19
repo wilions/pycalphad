@@ -14,6 +14,12 @@ from .thermal import solve_thermal_profile, extract_thermal_history_probe, rosen
 from .thermal3d import Thermal3DSimulation
 from .thermal_history import MultiPassThermalAccumulator, ScanTrack, MultiPassThermalHistoryResult
 from .schemas import ThermalHistory, MicrostructureState, SimulationResult
+from .back_diffusion import (
+    calculate_clyne_kurz_alpha,
+    effective_partition_coefficient,
+    simulate_back_diffusion_solidification,
+    BackDiffusionResult,
+)
 
 __all__ = [
     "calculate_clyne_davis_index",
@@ -25,6 +31,10 @@ __all__ = [
     "evaluate_cracking_susceptibility",
     "susceptibility_from_composition",
     "SolidificationCrackingAssessment",
+    "calculate_clyne_kurz_alpha",
+    "effective_partition_coefficient",
+    "simulate_back_diffusion_solidification",
+    "BackDiffusionResult",
     "GaussianHeatSource",
     "DoubleEllipsoidalHeatSource",
     "ConicalHeatSource",
